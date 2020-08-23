@@ -1,0 +1,43 @@
+{
+  "name": "nodejs-url-shortner-app",
+  "version": "1.0.0",
+  "description": "a simple application to url shortner using nodejs express",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "pm2 start src/index.js --watch",
+    "stop": "pm2 delete all"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jatinseth2007/NodeJs-Url-Shortner-App.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "mongodb",
+    "moongoose",
+    "redis"
+  ],
+  "author": "Jatin Seth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jatinseth2007/NodeJs-Url-Shortner-App/issues"
+  },
+  "homepage": "https://github.com/jatinseth2007/NodeJs-Url-Shortner-App#readme",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.23.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.27",
+    "morgan": "^1.10.0",
+    "tracer": "^1.1.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0"
+  }
+}

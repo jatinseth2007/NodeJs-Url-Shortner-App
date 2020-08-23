@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+    mongo:
+        container_name: 'url-shortner-app'
+        image: mongo
+        restart: always
+        environment:
+            #MONGO_INITDB_DATABASE: ${APP_DB_DATABASE_NAME}
+            MONGO_INITDB_ROOT_USERNAME: ${APP_DB_ROOT_USERNAME}
+            MONGO_INITDB_ROOT_PASSWORD: ${APP_DB_ROOT_PASSWORD}
+        volumes:
+            - ${APP_DB_DATABASE_VOLUME}:/data/db
+        ports:
+            - "27017:27017"
+        networks: 
+            - jatin-seth-network
+networks:
+    jatin-seth-network:
+        external:
+            name: jatin-seth-network
