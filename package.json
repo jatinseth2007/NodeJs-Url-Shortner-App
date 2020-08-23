@@ -19,7 +19,7 @@
     "redis"
   ],
   "author": "Jatin Seth",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jatinseth2007/NodeJs-Url-Shortner-App/issues"
   },
