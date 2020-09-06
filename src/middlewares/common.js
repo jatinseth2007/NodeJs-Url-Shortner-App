@@ -1,5 +1,6 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-useless-catch */
+const tracer = require('tracer').colorConsole();
 
 class CommonMiddlewares {
     /**
@@ -32,6 +33,22 @@ class CommonMiddlewares {
             throw error;
         }
     }
+
+    /**
+     * Function to handle uncaught exceptions
+     * Jaitn Seth
+     */
+    uncaughtExceptionHandler(error, promise) {
+        tracer.error('We got uncaughtException at:', promise, 'reason:', error);
+    }// EOF
+
+    /**
+     * Function to handle uncaught exceptions
+     * Jaitn Seth
+     */
+    uncaughtRejectionHandler(error, promise) {
+        tracer.error('We got unhandledRejection at:', promise, 'reason:', error);
+    }// EOF
 
     /**
      * Function to handle input validations

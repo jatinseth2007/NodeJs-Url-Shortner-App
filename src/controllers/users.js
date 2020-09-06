@@ -80,10 +80,11 @@ class UsersController {
             // fetch User by email...
             await userObj.fetchUserById(tokenPayload.id);
             // if user does not exist...
-            if (!userObj.id)
+            if (!userObj.id) {
                 throw {
                     message: 'User not found in our system.',
                 };
+            }// EOI
             // everything is perfect, let's create a valid tokens for user...
             const payload = {
                 id: userObj.id,

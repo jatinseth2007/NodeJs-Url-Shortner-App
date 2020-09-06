@@ -28,11 +28,7 @@ app.use(middlewares.notFound); // not found one
 app.use(middlewares.errorHandler); // error handler
 
 // unhandeled exception
-process.on('uncaughtException', (error, promise) => {
-    tracer.error('We got uncaughtException at:', promise, 'reason:', error);
-}).on('unhandledRejection', (error, promise) => {
-    tracer.error('We got unhandledRejection at:', promise, 'reason:', error);
-});
+process.on('uncaughtException', middlewares.uncaughtExceptionHandler).on('unhandledRejection', middlewares.uncaughtRejectionHandler);
 
 // calculating the port
 const port = (process?.env?.APP_PORT) ? process.env.APP_PORT : 9001;

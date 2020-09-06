@@ -1,6 +1,5 @@
 /* eslint-disable class-methods-use-this */
 const urlModel = require('../models/urls/index');
-const urlValidationSchema = require('../models/urls/validationSchema');
 
 class Url {
     /**
@@ -9,13 +8,6 @@ class Url {
      */
     async create(req, res, next) {
         try {
-            // validate the data first...
-            const validation = await urlValidationSchema.createNew().validateAsync(req.body);
-            // check if validation is failed
-            if ('error' in validation) {
-                throw validation.error;
-            }// EOI
-
             // see if we already have the url saved with us...
             const url = await urlModel.findByUrl(req.body);
             // if url already exist then just send it back...
@@ -72,6 +64,32 @@ class Url {
                 message: 'Url has been deleted successfully',
                 _id: req.params.id,
             });
+        } catch (error) {
+            next(error);
+        }
+    }// EOF
+
+    /**
+     * Function to handle redirection of short url to original url
+     * Jatin Seth
+     */
+    /**
+     * Function to delete an entry by ID
+     * Jatin Seth
+     */
+    async redirect(req, res, next) {
+        try {
+            // first let's try to find the url by ID...
+            const url = await urlModel.findById(req.params.id);
+            // check found url entry...
+            if (!url || 'url' in url === false) {
+                res.status(404);
+                throw {
+                    message: 'Url data not found',
+                };
+            }// EOI
+            //redirect the user...
+            res.redirect(url.url);
         } catch (error) {
             next(error);
         }

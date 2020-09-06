@@ -15,6 +15,20 @@ class UrlValidations {
             throw error;
         }
     }
+
+    /**
+     * Function to return the schema to validate only ID
+     * Jatin Seth
+     */
+    id() {
+        try {
+            return Joi.object({
+                id: Joi.string().required(),
+            });
+        } catch (error) {
+            throw error;
+        }
+    }
 }// EOC
 
 module.exports = new UrlValidations();
