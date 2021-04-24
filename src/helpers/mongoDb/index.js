@@ -19,6 +19,7 @@ class MongoDbConnection {
     async connect() {
         try {
             await mongoose.connect(`mongodb://${this.host}:${this.port}/${this.db}`, {
+                useCreateIndex: true,
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
                 auth: { authSource: this.db },

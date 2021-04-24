@@ -88,7 +88,7 @@ class Url {
                     message: 'Url data not found',
                 };
             }// EOI
-            //redirect the user...
+            // redirect the user...
             res.redirect(url.url);
         } catch (error) {
             next(error);
